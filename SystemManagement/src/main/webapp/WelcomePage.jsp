@@ -26,9 +26,11 @@
   </div>
 </nav>
 
+<span style="color:green">${msg}</span>
+
                     <div class="container mt-5 mb-200">
                     <div class="card">
-                   <center><h2>Welcome!!</h2></center>
+
                     </div>
                     </div>
 

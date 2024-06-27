@@ -24,6 +24,6 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     protected String[] getServletMappings() {
         System.out.println("running getServletMappings");
-        return new String[ ]{"/signup"};
+        return new String[ ]{"/signup","/login"};
     }
 }

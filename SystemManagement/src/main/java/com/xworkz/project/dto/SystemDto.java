@@ -1,14 +1,13 @@
 package com.xworkz.project.dto;
 
+import com.xworkz.project.util.PasswordGenerator;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,7 +24,7 @@ public class SystemDto {
     private String firstName;
 
     @NotNull(message = "lastName cannot be Null")
-    @Size(min=1,max=10,message = "lastName should be min 1 max 10")
+    @Size(min=1,max=20,message = "lastName should be min 1 max 20")
     @Pattern(regexp = "^[A-Za-z\\s]+$", message = "lastName can only contain letters and spaces")
     private String lastName;
 
@@ -41,6 +40,9 @@ public class SystemDto {
     @Size(min=5,max=300,message = "address should be min 5 max 300")
     private String address;
 
+    //this is for login page
+    private String password;
+
     private String createdBy;
 
     private LocalDateTime createdOn;
@@ -51,13 +53,13 @@ public class SystemDto {
 
     private boolean isActive;
 
-    @NotEmpty(message = "Please check agree")
-    @Transient
-    private String agree;
+    //to lock account after 2 attempt
 
-    public SystemDto(){
-        System.out.println("Created constr for SystemDto");
-    }
+    @Column(name="faild_attempt")
+    private int failedAttempt;
+
+    @Column(name = "acc_locked")
+    private boolean accLocked;
 
     @Override
     public String toString() {
@@ -69,14 +71,31 @@ public class SystemDto {
                 ", contactNumber=" + contactNumber +
                 ", alternateNumber=" + alternateNumber +
                 ", address='" + address + '\'' +
+                ", password='" + password + '\'' +
                 ", createdBy='" + createdBy + '\'' +
                 ", createdOn=" + createdOn +
                 ", updatedBy='" + updatedBy + '\'' +
                 ", updatedOn=" + updatedOn +
                 ", isActive=" + isActive +
+                ", failedAttempt=" + failedAttempt +
+                ", accLocked=" + accLocked +
                 ", agree='" + agree + '\'' +
                 '}';
     }
+
+    @NotEmpty(message = "Please check agree")
+    @Transient
+    private String agree;
+
+    // Autowire PasswordGenerator
+    @Transient
+    private String passwordGenerator;
+
+//    public SystemDto(PasswordGenerator passwordGenerator) {
+//        this.passwordGenerator = passwordGenerator.toString();
+//        this.password = passwordGenerator.generatePassword(12);
+//        System.out.println("Created constr for SystemDto");
+//    }
 
     public Integer getId() {
         return id;
@@ -134,6 +153,14 @@ public class SystemDto {
         this.address = address;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getCreatedBy() {
         return createdBy;
     }
@@ -180,5 +207,21 @@ public class SystemDto {
 
     public void setAgree(String agree) {
         this.agree = agree;
+    }
+
+    public int getFailedAttempt() {
+        return failedAttempt;
+    }
+
+    public void setFailedAttempt(int failedAttempt) {
+        this.failedAttempt = failedAttempt;
+    }
+
+    public boolean isAccLocked() {
+        return accLocked;
+    }
+
+    public void setAccLocked(boolean accLocked) {
+        this.accLocked = accLocked;
     }
 }

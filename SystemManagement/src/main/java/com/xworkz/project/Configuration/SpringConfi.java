@@ -1,5 +1,6 @@
 package com.xworkz.project.Configuration;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -17,11 +18,13 @@ public class SpringConfi {
         System.out.println("created constr in SpringConfi");
     }
 
+    @Bean
     public ViewResolver viewResolver(){
 
         System.out.println("Registering ViewResolver in SpringConfi");
         InternalResourceViewResolver internalResourceViewResolver=new InternalResourceViewResolver();
         internalResourceViewResolver.setPrefix("/");
+        internalResourceViewResolver.setSuffix(".jsp");
         return internalResourceViewResolver;
     }
 }
