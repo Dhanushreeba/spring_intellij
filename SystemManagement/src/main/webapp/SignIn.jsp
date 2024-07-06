@@ -102,6 +102,7 @@ function passwordValidation() {
         <a class="navbar-brand  text-dark" href="SignUp.jsp"><b>SignUp</b></a>
 
 
+
   </div>
 </nav>
 
@@ -138,6 +139,7 @@ function passwordValidation() {
               <span id="errorpassword"></span><br>
                  <label for="password" class="form-label  "><b>Password:</b></label>
                  <input type="password" class="form-control "  value="${dto.password}" id="password" name="password" onblur="passwordValidation()">
+                 <i id="password-icon" class="fa fa-key" style="display: none;"></i>
                         </div>
 
              <br>
@@ -146,7 +148,7 @@ function passwordValidation() {
                             </div>
 
                         <div class="form-group">
-                                  <p class="text-center text-muted mt-5 mb-0">Forget password? <a href="SignUp.jsp"
+                                  <p class="text-center text-muted mt-5 mb-0">Forget password? <a href="ForgetPassword.jsp"
                                       class="fw-bold text-body"><u>Click here</u></a></p>
                                   </div>
 

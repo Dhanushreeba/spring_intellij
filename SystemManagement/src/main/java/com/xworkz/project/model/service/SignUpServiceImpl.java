@@ -139,7 +139,7 @@ public class SignUpServiceImpl implements SignUpService {
             signUpRepo.update(user);
         }
 
-        }
+    }
 
     @Override
     public int getFailedAttempts(String email) {
@@ -152,7 +152,7 @@ public class SignUpServiceImpl implements SignUpService {
     public void resetFailedAttempts(String email) {
         SignUpDto user = signUpRepo.findByEmail(email);
         if (user != null) {
-            user.setFailedAttempt(0);
+            user.setFailedAttempt(1);
             signUpRepo.update(user);
         }
 

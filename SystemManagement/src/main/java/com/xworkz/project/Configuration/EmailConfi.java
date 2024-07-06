@@ -1,4 +1,4 @@
-package com.xworkz.project.Configuration;
+package com.xworkz.project.configuration;
 
 
 import org.springframework.context.annotation.Bean;
@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.Properties;
 
+//this EmailConfi class to setup auto generate password and to set userName or email to send email from to, to whom I wanted to send
+//@Component
 @Component
 public class EmailConfi {
 
@@ -18,7 +20,10 @@ public class EmailConfi {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
+        //this setUsername is the sender of email
         mailSender.setUsername("dhanushreegowda1999@gmail.com");
+        //this setPassword is to set the one time password
+        //the value inside() is the otp that generated in email that i have mention email above this otp is comes in the first when start to setup the password
         mailSender.setPassword("qjxu vinz wdkr zuqb");
 
         Properties props = mailSender.getJavaMailProperties();

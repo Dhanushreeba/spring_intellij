@@ -133,7 +133,7 @@ public class SignUpRepoImpl implements SignUpRepo {
         try {
             Query query2 = entityManager.createQuery("select sys from SignUpDto sys where sys.email=:email ");
             query2.setParameter("email", email);
-            System.out.println("Running extitsByEmail method in SignUpRepoImpl");
+            System.out.println("Running existsByEmail method in SignUpRepoImpl");
             return (SignUpDto) query2.getSingleResult();
         } catch (NoResultException noResultException) {
             return null;

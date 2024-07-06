@@ -1,4 +1,4 @@
-package com.xworkz.project.Configuration;
+package com.xworkz.project.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +11,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+//DataBaseConfi is to set the connection for database
+//@Configuration
 @Configuration
 public class DataBaseConfi {
 
@@ -18,6 +20,7 @@ public class DataBaseConfi {
         System.out.println("Created DataBaseConfi");
     }
 
+    //@value is to
     @Value("${jdbc.url}")
     private String url;
 
@@ -30,6 +33,7 @@ public class DataBaseConfi {
     @Value("${jdbc.driver}")
     private String driver;
 
+    //@Bean is to
     @Bean
     public DataSource dataSource(){
 
@@ -50,6 +54,7 @@ public class DataBaseConfi {
         bean.setDataSource(dataSource);
         JpaVendorAdapter jpaVendorAdapter=new HibernateJpaVendorAdapter();
         bean.setJpaVendorAdapter(jpaVendorAdapter);
+        // this to scan packages of dto class that includes fully qualified name with dto class
         bean.setPackagesToScan("com.xworkz.project.dto");
 
         Properties properties=new Properties();

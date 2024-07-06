@@ -58,7 +58,7 @@ public class SignUpDto {
 
     private boolean isActive;
 
-    //to lock account after 2 attempt
+    //to lock account after 3 attempt
 
     @Column(name="faild_attempt")
     private Integer failedAttempt;

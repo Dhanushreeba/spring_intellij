@@ -1,4 +1,4 @@
-package com.xworkz.project.Configuration;
+package com.xworkz.project.configuration;
 
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -24,6 +24,6 @@ public class WebInit extends AbstractAnnotationConfigDispatcherServletInitialize
     @Override
     protected String[] getServletMappings() {
         System.out.println("running getServletMappings");
-        return new String[ ]{"/signup","/login"};
+        return new String[ ]{"/"};
     }
 }

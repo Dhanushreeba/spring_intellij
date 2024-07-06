@@ -68,12 +68,12 @@ public class ForgetPasswordController {
     @PostMapping("/forget")
     public String run(@RequestParam("email") String email, Model model) {
         // Create a new SignUpDto and set only the email
-      SignUpDto dto= signUpService.findByEmail(email);//here y i use findByEmail is to generate password for existing email and it has to be stored in database
+        SignUpDto dto= signUpService.findByEmail(email);//here y i use findByEmail is to generate password for existing email and it has to be stored in database
 
         if (email == null) {
             System.out.println("No user found with email: " + email);
             model.addAttribute("error", "No user found with this email." +dto.getEmail());
-            return "ForgotPassword"; // Or the appropriate view name
+            return "ForgetPassword"; // Or the appropriate view name
         }else{
             System.out.println("user found with this password :"+dto.getEmail());
         }
@@ -104,3 +104,4 @@ public class ForgetPasswordController {
 
 
 }
+

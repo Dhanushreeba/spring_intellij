@@ -16,12 +16,16 @@
     <div class="container-fluid">
         <div class="navbar-header">
 
+        <!-- Add your logo here -->
+                                    <a class="navbar-brand" href="#">
+                                        <img src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png" alt="xworkz" width="140" height="70" >
+                                    </a>
+                                    <!-- End of logo -->
 
-        <a class="navbar-brand  text-dark" href="index.jsp"><b>Home</b></a>
+
                 <a class="navbar-brand  text-dark" href="SignUp.jsp"><b>SignUp</b></a>
-                        <a class="navbar-brand  text-dark" href="Login.jsp"><b>LoginPage</b></a>
-
-
+                <a class="navbar-brand  text-dark" href="SignIn.jsp"><b>SignIn</b></a>
+                <a class="navbar-brand  text-dark" href="ProfileUpload.jsp"><b>ProfileUpload</b></a>
 
   </div>
 </nav>

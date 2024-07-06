@@ -11,6 +11,7 @@ public interface SignUpRepo {
     // Find a SystemDto by email and password
     SignUpDto findByEmailAndPassword(String email, String password);
 
+
     SignUpDto findByEmail(String email); // Add this method to find a user by email
 
     //lock
