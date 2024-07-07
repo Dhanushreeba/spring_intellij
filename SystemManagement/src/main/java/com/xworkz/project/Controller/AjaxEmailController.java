@@ -25,7 +25,7 @@ public class AjaxEmailController {
 
     //getmapping is used to map the action "validateEmail" in init class
     @GetMapping("/validateEmail/{email}")
-    public String emailValidating(@PathVariable String email) {
+    public String emailValidation(@PathVariable String email) {
         //this print statement is to print email in console
         System.out.println(email);
         //this is to check the whether email is exits or not
@@ -38,7 +38,7 @@ public class AjaxEmailController {
 
 
     @GetMapping("/validateContactNumber/{contactNumber}")
-    public String contactNumberValidating(@PathVariable Long contactNumber) {
+    public String contactNumberValidation(@PathVariable Long contactNumber) {
         System.out.println(contactNumber);
         if (signUpService.existsByContactNumber(contactNumber)) {
             return "<span style='color:red;'>Contact Number Already exists</span>";

@@ -171,7 +171,7 @@
 
     <!-- ajax email validation-->
 
-         function emailValidating() {
+         function emailValidation() {
                             console.log("Validate email");
                             let email = document.getElementById("email").value;
                             console.log(email);
@@ -196,7 +196,7 @@
                                }
                             }
 
-        function contactNumberValidating() {
+        function contactNumberValidation() {
             console.log("Validate contact number");
             let contactNumber = document.getElementById("contactNumber").value;
             console.log(contactNumber);
