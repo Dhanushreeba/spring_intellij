@@ -29,4 +29,16 @@ public interface SignUpRepo {
     SignUpDto lookByEmail(String email);
 
 
+    //ResetPassword
+    boolean emailExists(String email);
+
+    //ResetPassword
+    boolean verifyOldPassword(String email, String oldPassword);
+
+    //ResetPassword
+    void updatePassword(String email, String newPassword);
+
+    //Veiw
+    SignUpDto checkByEmail(String email);
+
 }

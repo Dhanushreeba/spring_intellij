@@ -19,9 +19,9 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/controller/AjaxEmailController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/controller/EditController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/controller/ForgetPasswordController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/controller/ProfileController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/controller/ResetPasswordController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/controller/SignUpController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/controller/ViewUserController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/dto/SignUpDto.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/model/repo/SignUpRepo.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/model/repo/SignUpRepoImpl.java" afterDir="false" />

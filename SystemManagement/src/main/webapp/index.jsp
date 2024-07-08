@@ -29,7 +29,7 @@
 
   </div>
 </nav>
-
+                    <form id="index" action="index" method="post">
                     <div class="container mt-5 mb-200">
                     <div class="card">
                    <center><h2>Welcome!!</h2></center>

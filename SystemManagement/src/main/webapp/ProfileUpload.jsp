@@ -28,7 +28,8 @@
                 <!-- Add your logo here -->
                 <span><a class="navbar-brand" href="#">
                 <img src="https://x-workz.in/static/media/Logo.cf195593dc1b3f921369.png" alt="xworkz"
-                    width="120" height="70"></a></span><span><a class="navbar-brand text-dark" href="index.jsp"><b>Home</b></a>
+                    width="120" height="70"></a></span>
+                    <span><a class="navbar-brand text-dark" href="index.jsp"><b>Home</b></a>
                  </span>
                  </div>
                 <!-- End of logo -->
@@ -52,9 +53,9 @@
                      <li class="nav-item dropdown d-flex align-items-down">
                          <a class="nav-link dropdown-toggle mr-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
                          <div class="dropdown-menu dropdown-menu-left">
-                             <a class="dropdown-item" href="#">View</a>
-                             <a class="dropdown-item" href="#">Edit</a>
-                             <a class="dropdown-item" href="#">Reset</a>
+                             <a class="dropdown-item" href="View(deatils).jsp">View</a>
+                             <a class="dropdown-item" href="Edit.jsp">Edit</a>
+                             <a class="dropdown-item" href="ResetPassword.jsp">Reset</a>
                          </div>
                          <img src="https://img.icons8.com/?size=100&id=c8SsrDOfQgn3&format=png&color=000000" alt="" width="60" height="60" style="border-radius=30px"/>
                      </li>
@@ -67,6 +68,13 @@
 
             <div>
                  <form action="profile" method="post">
+                  <div class="container mt-5 mb-5 d-flex justify-content-center">
+                  <div class="card px-2 mt-5 mb-5 py-2 bg-body shadow mt-5 mb-6 rounded" style="width:40%; padding:30px;">
+                  <div class="card-body">
+                           <strong style="color:blue"><h3>${ProfilePageMessage}</h3></strong>
+                  </div>
+                     </div>
+                          </div>
 
                   <Center><h3><b>Welcome</b></h3></Center>
 

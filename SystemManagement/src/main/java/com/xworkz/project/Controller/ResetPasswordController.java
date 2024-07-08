@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
@@ -15,35 +16,45 @@ public class ResetPasswordController {
     @Autowired
     private SignUpService signUpService;
 
+
     ResetPasswordController() {
         System.out.println("created constr for ResetPasswordController");
     }
 
-    @PostMapping("/reset")
-    public String set(@RequestParam("email") String email, Model model) {
-        // Generate and set password before saving
-//        String generatedPassword = passwordGenerator.generatePassword(12);
-//        dto.setPassword(generatedPassword);
+//    @PostMapping("/reset")
+//    public String passwordReset(RedirectAttributes redirectAttributes, String email, String oldPassword, String newPassword, String confirmPassword) {
 //
-//        model.addAttribute("msg", "new password Successfully generated " + dto.getEmail());
-//        boolean save = this.signUpService.save(dto);
-//        if (save) {
-//            System.out.println("Details Saved Successfully " + dto);
-//
-//            // Send email with generated password
-//            String subject = "Welcome to our Issue Management";
-//            String body = "Hello " + dto.getEmail() + ",\n\nA new password has been generated for you: " + dto.getPassword();
-//
-//            signUpService.sendingEmail(email, subject, body);
-//            return "WelcomePage";
+//        boolean resetSuccessful = signUpService.resetPassword(email, oldPassword, newPassword, confirmPassword);
+//        if (resetSuccessful) {
+//            System.out.println("Password reset Successful: " + resetSuccessful);
+//            redirectAttributes.addFlashAttribute("passwordResetMessage", "Password reset successful");
 //        } else {
-//            System.out.println("Details Not Saved Successfully " + dto);
-//            model.addAttribute("error", "Failed to save details");
-//            return "ForgetPassword"; // Return the name of the forget password view
+//            redirectAttributes.addFlashAttribute("passwordResetError", "Failed to reset password. Please check your password");
 //        }
-        return "";
+//
+//        return "reset";
+//    }
+//
+//    @RequestMapping("reset")
+//    public String showResetPasswordPage(Model model) {
+//        return "ResetPassword";
+//    }
 
+    @PostMapping("/reset")
+    public String passwordReset(Model model, String email, String oldPassword, String newPassword, String confirmPassword) {
+
+        boolean resetSuccessful = signUpService.resetPassword(email, oldPassword, newPassword, confirmPassword);
+        if (resetSuccessful) {
+            System.out.println("Password reset Successful:" + resetSuccessful);
+            model.addAttribute("passwordResetMessage", "Password reset successful");
+
+        } else {
+            model.addAttribute("passwordResetError", "Failed to reset password.Please check your password");
+        }
+
+        return "SignIn";
     }
-
-
+    // return "ResetPassword";
 }
+
+

@@ -227,5 +227,48 @@ public class SignUpServiceImpl implements SignUpService {
         }
     }
 
+
+    //ResetPassword
+    @Override
+    public boolean resetPassword(String email, String oldPassword, String newPassword, String confirmPassword) {
+        if (!signUpRepo.emailExists(email))
+        {
+            return false;
+        }
+
+        if (!signUpRepo.verifyOldPassword(email, oldPassword))
+        {
+            return false;
+        }
+        if (!newPassword.equals(confirmPassword))
+        {
+            return false;
+        }
+        signUpRepo.updatePassword(email, newPassword);
+        sendPasswordEmail(email, "Password Reset Successful", "Your password has been successfully reset..Your new password is :" +newPassword);
+
+        return true;
+    }
+
+    //ResetPassword
+    @Override
+    public void sendPasswordEmail(String toEmail, String subject, String body) {
+
+
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setTo(toEmail);
+        simpleMailMessage.setSubject(subject);
+        simpleMailMessage.setText(body);
+        simpleMailMessage.setFrom("kmsrcb@gmail.com");
+
+
+        mailSender.send(simpleMailMessage);
+    }
+
+    @Override
+    public SignUpDto checkByEmail(String email) {
+        return signUpRepo.findByEmail(email);
+
+    }
 }
 

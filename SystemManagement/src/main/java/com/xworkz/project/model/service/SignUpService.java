@@ -43,6 +43,18 @@ public interface SignUpService {
     //to generate password after you forgot password
     boolean lookByEmail(String email);
 
+    //Reset Password
+    public boolean resetPassword(String email, String oldPassword, String newPassword, String confirmPassword);
+
+    //send Reset password to email
+
+    //Reset Password
+    public void sendPasswordEmail(String toEmail, String subject, String body);
+
+    //view
+    SignUpDto checkByEmail(String email);
+
+
 }
 
 
