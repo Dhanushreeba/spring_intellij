@@ -53,8 +53,8 @@
                      <li class="nav-item dropdown d-flex align-items-down">
                          <a class="nav-link dropdown-toggle mr-1" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
                          <div class="dropdown-menu dropdown-menu-left">
-                             <a class="dropdown-item" href="View(deatils).jsp">View</a>
-                             <a class="dropdown-item" href="Edit.jsp">Edit</a>
+                             <a class="dropdown-item" href="view">View</a>
+                             <a class="dropdown-item" href="edits">Edit</a>
                              <a class="dropdown-item" href="ResetPassword.jsp">Reset</a>
                          </div>
                          <img src="https://img.icons8.com/?size=100&id=c8SsrDOfQgn3&format=png&color=000000" alt="" width="60" height="60" style="border-radius=30px"/>

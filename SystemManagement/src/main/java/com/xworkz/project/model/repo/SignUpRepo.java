@@ -39,6 +39,7 @@ public interface SignUpRepo {
     void updatePassword(String email, String newPassword);
 
     //Veiw
-    SignUpDto checkByEmail(String email);
+    SignUpDto getUserByEmail(String email);
+
 
 }

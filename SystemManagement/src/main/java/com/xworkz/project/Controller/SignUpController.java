@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 //to map actions we use requestmapping and / will use to map actions ,@Controller tell to spring container to handel the controller and to create the object for this particular class
@@ -27,6 +28,10 @@ public class SignUpController {
     //passwordGenerator is to generate a random password
     @Autowired
     private PasswordGenerator passwordGenerator;
+
+    //View
+    @Autowired
+    private HttpSession httpSession;
 
 
     public SignUpController() {
@@ -94,7 +99,10 @@ public class SignUpController {
         if (dto != null) {
             //System.out.println("login success");
             signUpService.resetFailedAttempts(email);
-            model.addAttribute("msg", "Login successful " + dto.getFirstName());
+            model.addAttribute("msg", "SignIn successful " + dto.getFirstName());
+            //view
+            httpSession.setAttribute("signedInUserEmail",email);
+
             return "ProfileUpload";//change to welcome page
         } else {
             //the else part is set account lock
@@ -107,6 +115,7 @@ public class SignUpController {
                 System.out.println(email + "Your account is locked due to too many failed attempts.");
                 model.addAttribute("error", "Your account is locked due to too many failed attempts.");
                 model.addAttribute("isLocked", true); // Add attribute to indicate the account is locked
+
             } else {
                 model.addAttribute("error", "Invalid email id and password. Attempts: " + failedAttempts);
                 System.out.println("Invalid email id and password");

@@ -325,8 +325,9 @@ public class SignUpRepoImpl implements SignUpRepo {
 
         }
 
+        //view
     @Override
-    public SignUpDto checkByEmail(String email) {
+    public SignUpDto getUserByEmail(String email) {
         System.out.println("checkByEmail method in SignUpRepoImpl");
         EntityManager entityManager = this.entityManagerFactory.createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
@@ -350,6 +351,7 @@ public class SignUpRepoImpl implements SignUpRepo {
             entityManager.close();
         }
     }
+
 
 
 }

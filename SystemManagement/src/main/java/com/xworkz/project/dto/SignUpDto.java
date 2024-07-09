@@ -61,10 +61,10 @@ public class SignUpDto {
     //to lock account after 3 attempt
 
     @Column(name="faild_attempt")
-    private Integer failedAttempt;
+    private Integer failedAttempt=0;
 
     @Column(name = "acc_locked")
-    private Boolean accLocked;
+    private Boolean accLocked=true;
 
     @Override
     public String toString() {

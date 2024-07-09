@@ -52,7 +52,10 @@ public interface SignUpService {
     public void sendPasswordEmail(String toEmail, String subject, String body);
 
     //view
-    SignUpDto checkByEmail(String email);
+    SignUpDto getUserByEmail(String email);
+
+    //view
+    String getSignedInUserEmail();
 
 
 }

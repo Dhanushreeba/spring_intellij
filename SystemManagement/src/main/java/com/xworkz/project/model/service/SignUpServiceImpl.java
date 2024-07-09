@@ -8,6 +8,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,6 +23,9 @@ public class SignUpServiceImpl implements SignUpService {
     @Autowired
     private JavaMailSender mailSender;
 
+    //view
+    @Autowired
+    private HttpSession httpSession;
 
     //password lock
     private Map<String, Integer> failedAttemptsMap = new HashMap<>();
@@ -259,16 +263,25 @@ public class SignUpServiceImpl implements SignUpService {
         simpleMailMessage.setTo(toEmail);
         simpleMailMessage.setSubject(subject);
         simpleMailMessage.setText(body);
-        simpleMailMessage.setFrom("kmsrcb@gmail.com");
+        simpleMailMessage.setFrom("dhanushreegowda1999.com");
 
 
         mailSender.send(simpleMailMessage);
     }
 
+    //view
     @Override
-    public SignUpDto checkByEmail(String email) {
+    public SignUpDto getUserByEmail(String email) {
         return signUpRepo.findByEmail(email);
 
+    }
+
+    //view
+    @Override
+    public String getSignedInUserEmail() {
+
+        httpSession.getAttribute("signedInUserEmail");
+        return "String";
     }
 }
 
