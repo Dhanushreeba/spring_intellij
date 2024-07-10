@@ -65,6 +65,7 @@ public class SignUpServiceImpl implements SignUpService {
         dto.setCreatedBy(createdBy);
         dto.setCreatedOn(createdOn);
         dto.setUpdatedBy(updatedBy);
+        dto.setUpdatedOn(updatedOn);
         dto.setActive(isActive);
     }
 
@@ -156,7 +157,7 @@ public class SignUpServiceImpl implements SignUpService {
     public void resetFailedAttempts(String email) {
         SignUpDto user = signUpRepo.findByEmail(email);
         if (user != null) {
-            user.setFailedAttempt(1);
+            user.setFailedAttempt(0);//false
             signUpRepo.update(user);
         }
 
@@ -171,6 +172,18 @@ public class SignUpServiceImpl implements SignUpService {
             signUpRepo.update(user);
         }
     }
+
+    @Override
+    public void unlockAccount(String email){
+        SignUpDto user=signUpRepo.findByEmail(email);
+        if (user!=null){
+            user.setAccLocked(false);
+            signUpRepo.update(user);
+        }
+    }
+
+
+
 
 //    @Override
 //    public boolean existsByEmail(String email) {

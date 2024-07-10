@@ -12,6 +12,7 @@ public class EditUserRepoImpl implements EditUserRepo{
     @Autowired
     private EntityManagerFactory entityManagerFactory;
 
+    //Edit
     @Override
     public SignUpDto findByEmail(String email) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -28,6 +29,7 @@ public class EditUserRepoImpl implements EditUserRepo{
         }
     }
 
+    //Edit
     @Override
     public SignUpDto editByEmail(SignUpDto updatedUserDetails) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();

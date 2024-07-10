@@ -3,6 +3,9 @@ package com.xworkz.project.controller;
 import com.xworkz.project.dto.SignUpDto;
 import com.xworkz.project.model.service.SignUpService;
 import com.xworkz.project.util.PasswordGenerator;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,8 +21,10 @@ import javax.validation.Valid;
 //where we use @controller in class is nothing but a  create object for that particular class
 @Controller
 @RequestMapping("/")
+@Slf4j
 public class SignUpController {
 
+    private static final Logger log = LoggerFactory.getLogger(SignUpController.class);
     //SystemService will give the repository(implementation class) queries to the controller class
     @Autowired
     private SignUpService signUpService;
@@ -35,7 +40,7 @@ public class SignUpController {
 
 
     public SignUpController() {
-        System.out.println("Created constructor for SignUpController");
+        log.info("Created constructor for SignUpController");
     }
 
     //this display method is for Signup form and signUp.jsp
@@ -50,7 +55,7 @@ public class SignUpController {
         dto.setPassword(generatedPassword);
 
         if (bindingResult.hasErrors()) {
-            System.out.println("Dto has invalid data in SignUpController");
+            log.info("Dto has invalid data in SignUpController");
             bindingResult
                     .getAllErrors()
                     .forEach(dtoError -> System.out.println(dtoError.getDefaultMessage()));
@@ -60,7 +65,7 @@ public class SignUpController {
         } else {
             model.addAttribute("name", "SignUp Successful " + dto.getFirstName());
             boolean save = this.signUpService.save(dto);
-            System.out.println("dto" + dto);
+            log.info("dto" + dto);
             if (save) {
                 System.out.println("Details Saved Successfully " + dto);
 
@@ -71,13 +76,13 @@ public class SignUpController {
                 signUpService.sendingEmail(email,subject, body);
 
             } else {
-                System.out.println("Details Not Saved Successfully " + dto);
+                log.info("Details Not Saved Successfully " + dto);
                 return "SignIn";
             }
         }
         model.addAttribute("name", "SignUp Successful " + dto.getFirstName());
-        System.out.println("Creating SignUp page/SignUp");
-        System.out.println("SignUp Data :" + dto);
+        log.info("Creating SignUp page/SignUp");
+        log.info("SignUp Data :" + dto);
         return "SignIn";
     }
 
@@ -91,10 +96,10 @@ public class SignUpController {
 
     //this login method is for Signin form and signin.jsp
     @PostMapping("/signin")
-    public String signin(String email, String password, Model model) {
-        System.out.println("running login method...");
-        System.out.println("Email :" + email);
-        System.out.println("password :" + password);
+    public String signin(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
+        log.info("running signIn method...");
+        log.info("Email :" + email);
+        log.info("password :" + password);
         SignUpDto dto = signUpService.findByEmailAndPassword(email, password);
         if (dto != null) {
             //System.out.println("login success");
@@ -109,17 +114,17 @@ public class SignUpController {
             //acc lock after 3 attempts
             signUpService.incrementFailedAttempts(email);
             int failedAttempts = signUpService.getFailedAttempts(email);
-            System.out.println("Failed attempts for " + email + ": " + failedAttempts);
+            log.info("Failed attempts for " + email + ": " + failedAttempts);
             if (failedAttempts >= 3) {
                 signUpService.lockAccount(email);
-                System.out.println(email + "Your account is locked due to too many failed attempts.");
+                log.info(email + "Your account is locked due to too many failed attempts.");
                 model.addAttribute("error", "Your account is locked due to too many failed attempts.");
-                model.addAttribute("isLocked", true); // Add attribute to indicate the account is locked
+                model.addAttribute("accLocked", true); // Add attribute to indicate the account is locked
 
             } else {
                 model.addAttribute("error", "Invalid email id and password. Attempts: " + failedAttempts);
-                System.out.println("Invalid email id and password");
-                model.addAttribute("isLocked", false); // Add attribute to indicate the account is not locked
+                log.info("Invalid email id and password");
+                model.addAttribute("accLocked", false); // Add attribute to indicate the account is not locked
 
             }
             return "SignIn"; // Return to login page

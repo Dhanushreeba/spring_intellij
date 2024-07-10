@@ -35,6 +35,8 @@ public interface SignUpService {
 
     void lockAccount(String email);
 
+    void unlockAccount(String email);
+
 //ajax
     boolean existsByEmail(String email);
 //ajax

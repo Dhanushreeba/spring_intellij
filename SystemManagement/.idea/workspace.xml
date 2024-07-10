@@ -22,6 +22,7 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/controller/ResetPasswordController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/controller/SignUpController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/controller/ViewUserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/dto/ImageDto.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/dto/SignUpDto.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/model/repo/EditUserRepo.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/xworkz/project/model/repo/EditUserRepoImpl.java" afterDir="false" />

@@ -1,6 +1,9 @@
 package com.xworkz.project.controller;
 
 import com.xworkz.project.model.service.SignUpService;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,14 +14,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
+@Slf4j
 public class ResetPasswordController {
 
+    private static final Logger log = LoggerFactory.getLogger(ResetPasswordController.class);
     @Autowired
     private SignUpService signUpService;
 
 
     ResetPasswordController() {
-        System.out.println("created constr for ResetPasswordController");
+        log.info("created constr for ResetPasswordController");
+        log.info("Loggers for reset constr");
     }
 
 //    @PostMapping("/reset")
@@ -45,7 +51,7 @@ public class ResetPasswordController {
 
         boolean resetSuccessful = signUpService.resetPassword(email, oldPassword, newPassword, confirmPassword);
         if (resetSuccessful) {
-            System.out.println("Password reset Successful:" + resetSuccessful);
+            log.info("Password reset Successful:" + resetSuccessful);
             model.addAttribute("passwordResetMessage", "Password reset successful");
 
         } else {

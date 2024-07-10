@@ -69,7 +69,7 @@ public class SignUpRepoImpl implements SignUpRepo {
     public SignUpDto findByEmail(String email) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
-            Query query = entityManager.createQuery("select sys from SignUpDto sys where email=:email");
+            Query query = entityManager.createQuery("select sys from SignUpDto sys where sys.email=:email");
             query.setParameter("email", email);
 
             List<SignUpDto> resultList = query.getResultList();

@@ -10,6 +10,16 @@
 
 <script>
 
+ <!--this button disabled is not working in js file-->
+                     function disableButton() {
+                 var accountLocked = "${accountLocked}";
+                 if (accountLocked === "true") {
+                     document.getElementById("signinsubmit").disabled = true;
+                 }
+             }
+             window.onload = disableButton;
+ </script>
+<script>
 let fieldsChecks=
 {
 		"email":false,
@@ -84,6 +94,14 @@ function passwordValidation() {
                     validateAndEnableSubmit();
 }
 
+function disableButton() {
+              var accountLocked = document.getElementById("accountLocked").value;
+              if (accountLocked === "true") {
+                  document.getElementById("signinsubmit").disabled = true;
+              }
+          }
+          window.onload =disableButton;
+
 </script>
 </head>
 <body>
@@ -144,7 +162,7 @@ function passwordValidation() {
 
              <br>
                             <div class="list-group">
-                                <input class="btn btn-info" type="submit" id="submit" value="SignIn"  <c:if test="${isLocked}">disabled</c:if>/>
+                                <input class="btn btn-info" type="submit" id="signinsubmit" value="SignIn"  <c:if test="${isLocked}">disabled</c:if>/>
                             </div>
 
                         <div class="form-group">
